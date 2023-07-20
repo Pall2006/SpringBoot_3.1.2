@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.bk6.SpingBoot_312.dao.UserDAO;
 import ru.bk6.SpingBoot_312.model.User;
-
-
 import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -15,15 +14,14 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
 
-
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User getUserById(int id) {
         return userDAO.getUserById(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }
@@ -37,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void updateUserById(int id, User user) {
-        userDAO.updateUserById(id,user);
+        userDAO.updateUserById(id, user);
     }
 
     @Override
